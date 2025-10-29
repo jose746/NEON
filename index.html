@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    
     <title>EVOLUCION</title>
    
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -1101,9 +1103,12 @@ border-radius: 50%; /* Sugerencia para que se vea bien durante la rotación */
 
 
     /* Marco azul fijo */
-   .fixed-border {
+  .fixed-border {
   position: fixed;
-  inset: 0; /* reemplaza top, right, bottom, left */
+  inset: 0;
+  width: 100vw;
+  height: 100dvh; /* para navegadores modernos */
+  height: 100vh;  /* fallback para otros */
   pointer-events: none;
   border: 3px solid rgb(0, 255, 98);
   z-index: 10000;
