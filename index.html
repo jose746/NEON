@@ -46,8 +46,9 @@
  body {
     padding-top: env(safe-area-inset-top, 0);
     /* ¡Ajustar este valor! Usaremos 81px como punto de partida */
-    padding-bottom: 81px; 
-    /* El valor debe coincidir con la altura total real de la barra. */
+   /* --- MODIFICACIÓN CLAVE: Ajustar el padding del body --- */
+    padding-bottom: calc(81px + env(safe-area-inset-bottom, 0));
+    /* -------------------------------------------------------- */
     
     /* Asegúrate de que el fondo sea sólido si el gradiente es todo negro */
     background: #000000;
@@ -813,13 +814,22 @@ display: block;
     bottom: 0;
     left: 0;
     width: 100%;
+    
+    /* Mantenemos el fondo actual */
     background: rgba(0, 0, 0, 0.95);
     border-top: 1px solid #ffffff;
     display: flex;
     justify-content: space-around;
-    padding: 15px 0;
+    
+    /* --- MODIFICACIÓN CLAVE: Ajustar el padding inferior --- */
+    /* El padding-top se mantiene fijo en 15px. */
+    /* El padding-bottom ahora incluye 15px (base) + el área segura (env()) */
+    padding-top: 15px;
+    padding-bottom: calc(15px + env(safe-area-inset-bottom, 0)); 
+    /* -------------------------------------------------------- */
+    
     z-index: 10000;
-     box-shadow: 0 -5px 20px rgb(0, 174, 255);
+    box-shadow: 0 -5px 20px rgb(0, 174, 255);
 }
 
 .nav-item {
