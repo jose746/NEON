@@ -45,7 +45,12 @@
 
  body {
     padding-top: env(safe-area-inset-top, 0);
-      padding-bottom: 70px;
+    /* ¡Ajustar este valor! Usaremos 81px como punto de partida */
+    padding-bottom: 81px; 
+    /* El valor debe coincidir con la altura total real de la barra. */
+    
+    /* Asegúrate de que el fondo sea sólido si el gradiente es todo negro */
+    background: #000000;
       min-height: 100vh;
    margin-top:0;
    
@@ -54,7 +59,7 @@
     /* Selector para el elemento <body> del documento. */
     font-family: 'Courier New', monospace;
     /* Establece una tipografía de ancho fijo (monospace) con 'Courier New' como primera opción. */
-    background: linear-gradient(to bottom, #000000 0%, #000000 50%, #000000 100%);
+   
 
     /* Establece un fondo con un gradiente lineal. */
     color: #e1e1e1;
