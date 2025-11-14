@@ -1112,33 +1112,47 @@ border-radius: 50%; /* Sugerencia para que se vea bien durante la rotación */
 
 
  /* El marco fijo que contiene el borde */
-        #edge-border-frame {
-            position: fixed;
-            
-            /* Se ancla a los bordes de la pantalla, respetando las safe areas de iOS */
-            top: env(safe-area-inset-top, 0);
-            right: env(safe-area-inset-right, 0);
-            bottom: env(safe-area-inset-bottom, 0);
-            left: env(safe-area-inset-left, 0);
-            width: auto;
-            height: auto;
-            
-            z-index: 10000; /* Bajo para no interferir con modales */
-            pointer-events: none; /* Permite clics en el contenido debajo */
-            overflow: hidden; /* Necesario para que el border-radius funcione bien */
+      
+ /* El marco fijo que contiene el borde */
+ #edge-border-frame {
+    position: fixed;
+    
+    /* Se ancla a los bordes de la pantalla, respetando las safe areas de iOS */
+    top: env(safe-area-inset-top, 0);
+    right: env(safe-area-inset-right, 0);
+    bottom: env(safe-area-inset-bottom, 0);
+    left: env(safe-area-inset-left, 0);
+    width: auto;
+    height: auto;
+    
+    z-index: 10000; 
+    pointer-events: none; 
+    overflow: hidden;
 
-            /* CLAVE: Borde sólido y sombra */
-            border: 7px solid #00d5ff; /* Color y grosor base del borde */
-            border-top-width: 0; /* <--- CLAVE: ELIMINA EL BORDE SUPERIOR */
-            border-radius: 5px; 
-            
-            /* Sombra para darle un efecto de resplandor */
-            box-shadow: 
-                0 8px 15px rgba(255, 0, 255, 0.6), /* Sombra inferior para profundidad */
-                0 0 5px rgba(255, 0, 255, 0.4); /* Resplandor general */
-        }
-        
-        /* Deshabilitamos los pseudo-elementos del código anterior (animación) */
+    /* ------------------------------------------- */
+    /* CLAVE: Borde con Múltiples Colores (Gradiente Estático) */
+    /* ------------------------------------------- */
+    
+    /* 1. Establecer el borde como transparente para que la imagen de borde se muestre */
+    border: 6px solid transparent; 
+    
+    /* Mantenemos el borde superior eliminado */
+    border-top-width: 0; 
+    
+    border-radius: 5px; 
+   
+    /* 2. Definir el gradiente de borde */
+    /* Gradiente que va de Izquierda (Azul) a Derecha (Magenta) */
+    border-image: linear-gradient(
+        to bottom,
+        #04e4fd 0%,     /* Azul Aguamarina al inicio (Izquierda) */
+        #ed0000 50%,    /* Azul brillante en el centro */
+        #00d5ff 100%    /* Magenta al final (Derecha) */
+    ) 1; /* El '1' es crucial para que el borde use toda la imagen del gradiente */
+    
+    /* Sombra para darle un efecto de resplandor */
+    box-shadow: 0 0 10px rgba(4, 253, 216, 0.5); 
+}        /* Deshabilitamos los pseudo-elementos del código anterior (animación) */
         #edge-border-frame::before,
         #edge-border-frame::after {
             content: none !important;
